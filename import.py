@@ -9,14 +9,15 @@ df_full["measurement"] = ['FO' for t in range(len(df_full))]
 lines = []
 for d in range(len(df_full)):
     temp = \
-    "jobname=%s" % str(df_full["jobname"][d]).replace(" ", "_") \
-      + ",status=%s" % str(df_full["status"][d]).replace(" ", "_") \
+        "jobname=%s" % str(df_full.iloc[d,0])\
+      + ",status=%s" % str(df_full.iloc[d,1])\
       + " " \
-      + "schedule_start_time=\"%s\"" % str(df_full["schedule_start_time"][d]) \
-      + ",start_time=\"%s\"" % str(df_full["start_time"][d]) \
-      + ",end_time=\"%s\"" % str(df_full["end_time"][d]) \
-      + ",dutation_sec=\"%s\"" % str(df_full["duration_sec"][d]) \
-      + ",dutation=\"%s\"" % str(df_full["duration"][d])
+      + "schedule_start_time=\"%s\"" % str(df_full.iloc[d,2]) \
+      + ",start_time=\"%s\"" % str(df_full.iloc[d,3]) \
+      + ",end_time=\"%s\"" % str(df_full.iloc[d,4]) \
+      + ",dutation_sec=\"%s\"" % str(df_full.iloc[d,5]) \
+      + ",dutation=\"%s\"" % str(df_full.iloc[d,6])
+      
     lines.append(temp)
 thefile = open('import.txt', '+a')
 for item in lines:
